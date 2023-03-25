@@ -1,0 +1,28 @@
+Exceptions in selenium java
+1.	TimeoutException: This exception occurs when a command in Selenium does not complete
+    within the specified time limit. This can happen when the page is taking too long to load
+    or the element is not present on the page.
+2.	NoSuchElementException: This exception occurs when an element is not found on the page using
+    the given selector. This can happen when the selector used to locate the element is incorrect
+    or the element is not present on the page.
+3.	StaleElementReferenceException: This exception occurs when the referenced element is no longer
+    available on the page. This can happen when the page is reloaded or the element is removed from the DOM.
+4.	ElementNotVisibleException: This exception occurs when an element is present on the page but is not visible.
+    This can happen when the element is hidden behind another element or its visibility is set to false in the CSS.
+5.	ElementNotSelectableException: This exception occurs when an element is not selectable, such as when it is
+    disabled or read-only.
+6.	NoSuchFrameException: This exception occurs when the frame being searched for does not exist or is not
+    currently available.
+7.	UnexpectedAlertPresentException: This exception occurs when an unexpected alert is displayed on the page.
+8.	InvalidSelectorException: This exception occurs when the selector used to locate the element is
+    invalid or malformed.
+9.	ElementClickInterceptedException: This exception occurs when the click command is intercepted by
+    another element on the page, such as a modal dialog box.
+10.	ElementNotInteractableException: This exception occurs when an element is not interactable
+    or is not in a state that can be interacted with, such as when it is disabled or read-only.
+
+In general, Selenium exceptions occur when there is an issue with the page, the element being located,
+or the command being executed. These issues can be caused by a variety of factors, including
+slow network connections, server errors, incorrect selectors, or unexpected changes to the page structure.
+By understanding the causes of these exceptions, you can better troubleshoot issues and write more reliable
+Selenium tests.

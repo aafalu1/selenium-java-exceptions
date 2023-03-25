@@ -1,0 +1,3 @@
+com\aafalu\interview\solutions\seleniumexceptions\SeleniumNoSuchElementException.class
+com\aafalu\interview\solutions\seleniumexceptions\SeleniumStaleElementException.class
+com\aafalu\interview\solutions\seleniumexceptions\SeleniumElementNotInteractableException.class
