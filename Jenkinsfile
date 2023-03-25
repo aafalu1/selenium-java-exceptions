@@ -30,19 +30,36 @@ bat 'mvn verify'
 }
 
 }
-stage('Kill chromedriver.exe') {
+stage('Kill Chrome processes') {
     steps {
         script {
+            // Find and kill chromedriver.exe
             def processName = 'chromedriver.exe'
             def pid = bat(returnStdout: true, script: "tasklist /FI \"IMAGENAME eq $processName\" /NH /FO CSV | findstr /i \"$processName\"")
                 .trim()
                 .replaceAll('"','')
                 .split(',')[1]
-            bat 'echo "killing processName for $processName"'
-            bat "taskkill /F /PID $pid"
+            if (pid) {
+                bat "taskkill /F /PID $pid"
+                echo "Killed process $processName with PID $pid"
+            } else {
+                echo "Process $processName not found"
+            }
+
+            // Find and kill chrome.exe
+            processName = 'chrome.exe'
+            pid = bat(returnStdout: true, script: "tasklist /FI \"IMAGENAME eq $processName\" /NH /FO CSV | findstr /i \"$processName\"")
+                .trim()
+                .replaceAll('"','')
+                .split(',')[1]
+            if (pid) {
+                bat "taskkill /F /PID $pid"
+                echo "Killed process $processName with PID $pid"
+            } else {
+                echo "Process $processName not found"
+            }
         }
     }
 }
-
 }
 }
