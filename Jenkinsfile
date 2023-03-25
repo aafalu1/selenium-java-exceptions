@@ -12,14 +12,14 @@ steps{
 bat 'echo "downloaidng required resources"'
 checkout([$class: 'GitSCM',
                           branches: [[name: '*/master']],
-                          userRemoteConfigs: [[url: 'https://github.com/aafalu1/selenium.git']]])
+                          userRemoteConfigs: [[url: 'https://github.com/aafalu1/selenium-java-exceptions.git']]])
 }
 
 }
 stage('Build'){
 steps{
 bat 'echo "Building project"'
- bat 'mvn clean package -DsuiteXmlFile=SmokeTest.xml'
+ bat 'mvn clean package -DsuiteXmlFile=testNG.xml'
 }
 
 }
