@@ -25,8 +25,8 @@ bat 'echo "Building project"'
 }
 stage('Test'){
 steps{
-bat 'echo "Test "
- bat 'mvn verify
+bat 'echo "Test "'
+bat 'mvn verify'
 }
 
 }
