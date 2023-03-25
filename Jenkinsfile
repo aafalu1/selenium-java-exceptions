@@ -28,7 +28,19 @@ steps{
 bat 'echo "Test "'
 bat 'mvn verify'
 }
-
+stage('Kill chromedriver.exe') {
+    steps {
+        script {
+            def processName = 'chromedriver.exe'
+            def pid = bat(returnStdout: true, script: "tasklist /FI \"IMAGENAME eq $processName\" /NH /FO CSV | findstr /i \"$processName\"")
+                .trim()
+                .replaceAll('"','')
+                .split(',')[1]
+            bat 'echo "kill processes for $processName"'
+            bat "taskkill /F /PID $pid"
+        }
+    }
+}
 }
 }
 }
