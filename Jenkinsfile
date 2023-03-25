@@ -28,6 +28,8 @@ steps{
 bat 'echo "Test "'
 bat 'mvn verify'
 }
+
+}
 stage('Kill chromedriver.exe') {
     steps {
         script {
@@ -36,11 +38,11 @@ stage('Kill chromedriver.exe') {
                 .trim()
                 .replaceAll('"','')
                 .split(',')[1]
-            bat 'echo "kill processes for $processName"'
+            bat 'echo "killing processName for $processName"'
             bat "taskkill /F /PID $pid"
         }
     }
 }
-}
+
 }
 }
