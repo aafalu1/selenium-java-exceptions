@@ -2,8 +2,8 @@
 <suite name="MyTestSuite">
     <test name="MyTest">
         <classes>
-            <!--<class name="com.aafalu.interview.solutions.seleniumexceptions.SeleniumNoSuchElementException" /> -->
-            <!-- <class name="com.aafalu.interview.solutions.seleniumexceptions.SeleniumStaleElementException" /> -->
+           <class name="com.aafalu.interview.solutions.seleniumexceptions.SeleniumNoSuchElementException" />
+            <class name="com.aafalu.interview.solutions.seleniumexceptions.SeleniumStaleElementException" />
              <class name="com.aafalu.interview.solutions.seleniumexceptions.SeleniumElementNotInteractableException" />
         </classes>
     </test>
