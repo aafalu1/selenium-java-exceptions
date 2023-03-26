@@ -16,20 +16,6 @@ checkout([$class: 'GitSCM',
 }
 
 }
-stage('Build'){
-steps{
-    bat 'echo "Building project"'
-    bat 'mvn clean package -DsuiteXmlFile=testNG.xml'
-}
-
-}
-stage('Test'){
-steps{
-    bat 'echo "Test "'
-    bat 'mvn verify'
-}
-
-}
 stage('Kill Chrome processes') {
     steps {
         script {
@@ -61,5 +47,20 @@ stage('Kill Chrome processes') {
         }
     }
 }
+stage('Build'){
+steps{
+    bat 'echo "Building project"'
+    bat 'mvn clean package -DsuiteXmlFile=testNG.xml'
+}
+
+}
+stage('Test'){
+steps{
+    bat 'echo "Test "'
+    bat 'mvn verify'
+}
+
+}
+
 }
 }
