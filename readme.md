@@ -1,1 +1,3 @@
-This project is built in  simple selenium java platform. It expalins some important selenium exceptions with example.
+This project is built in  simple selenium java platform. 
+The main goal is to cover root cause of selenium exception and
+illustrate how to overcome these exceptions.
