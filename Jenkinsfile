@@ -17,7 +17,16 @@ checkout([$class: 'GitSCM',
 
 }
 
-    stage('Check for Chrome processes') {
+    
+
+stage('Build'){
+steps{
+    bat 'echo "Building project"'
+    bat 'mvn clean package -DsuiteXmlFile=testNG.xml'
+}
+
+}
+stage('Check for Chrome processes') {
       steps {
         script {
           // Check if chromedriver.exe process is running
@@ -36,14 +45,6 @@ checkout([$class: 'GitSCM',
         }
       }
     }
-
-stage('Build'){
-steps{
-    bat 'echo "Building project"'
-    bat 'mvn clean package -DsuiteXmlFile=testNG.xml'
-}
-
-}
 stage('Test'){
 steps{
     bat 'echo "Test "'
