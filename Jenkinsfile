@@ -16,7 +16,7 @@ checkout([$class: 'GitSCM',
 }
 
 }
-stages {
+
     stage('Check for Chrome processes') {
       steps {
         script {
@@ -36,7 +36,7 @@ stages {
         }
       }
     }
-}
+
 stage('Build'){
 steps{
     bat 'echo "Building project"'
