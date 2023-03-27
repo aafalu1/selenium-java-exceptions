@@ -16,6 +16,27 @@ checkout([$class: 'GitSCM',
 }
 
 }
+stages {
+    stage('Check for Chrome processes') {
+      steps {
+        script {
+          // Check if chromedriver.exe process is running
+          if (isProcessRunning('chromedriver.exe')) {
+            // Kill the chromedriver.exe process
+            killProcess('chromedriver.exe')
+            println "Killed chromedriver.exe process"
+          }
+
+          // Check if chrome.exe process is running
+          if (isProcessRunning('chrome.exe')) {
+            // Kill the chrome.exe process
+            killProcess('chrome.exe')
+            println "Killed chrome.exe process"
+          }
+        }
+      }
+    }
+}
 stage('Build'){
 steps{
     bat 'echo "Building project"'
@@ -30,36 +51,16 @@ steps{
 }
 
 }
-stage('Kill Chrome processes') {
-    steps {
-        script {
-            // Find and kill chromedriver.exe
-            def processName = 'chromedriver.exe'
-            def pid = bat(returnStdout: true, script: "tasklist /FI \"IMAGENAME eq $processName\" /NH /FO CSV | findstr /i \"$processName\"")
-                .trim()
-                .replaceAll('"','')
-                .split(',')[1]
-            if (pid) {
-                bat "taskkill /F /PID $pid"
-                echo "Killed process $processName with PID $pid"
-            } else {
-                echo "Process $processName not found"
-            }
 
-            // Find and kill chrome.exe
-            processName = 'chrome.exe'
-            pid = bat(returnStdout: true, script: "tasklist /FI \"IMAGENAME eq $processName\" /NH /FO CSV | findstr /i \"$processName\"")
-                .trim()
-                .replaceAll('"','')
-                .split(',')[1]
-            if (pid) {
-                bat "taskkill /F /PID $pid"
-                echo "Killed process $processName with PID $pid"
-            } else {
-                echo "Process $processName not found"
-            }
-        }
-    }
 }
 }
+def isProcessRunning(processName) {
+  def processes = "tasklist /FI \"IMAGENAME eq ${processName}\" /NH /FO CSV".execute().text
+  return processes.contains(processName)
+}
+
+// Function to kill a process
+def killProcess(processName) {
+  def processes = "taskkill /IM ${processName} /F".execute().text
+  return processes.contains("SUCCESS")
 }
