@@ -2,7 +2,6 @@ package com.aafalu.interview.solutions.seleniumexceptions;
 
 import com.aafalu.interview.solutions.Base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -12,7 +11,6 @@ import org.testng.annotations.Test;
 
 public class SeleniumStaleElementException extends TestBase {
 
-
     @BeforeMethod
     public void setUpMethod() {
         launchBrowser("https://www.google.com");
@@ -21,12 +19,12 @@ public class SeleniumStaleElementException extends TestBase {
     @Test
     public void testStaleElementReferenceException() {
 
-       /*
-       This exception occurs when the WebDriver instance tries to interact
-       with an element that has been removed from the DOM or is no longer
-       attached to the web page. This can happen when the page is
-       refreshed, or the element is removed dynamically.
-        */
+        /*
+         * This exception occurs when the WebDriver instance tries to interact
+         * with an element that has been removed from the DOM or is no longer
+         * attached to the web page. This can happen when the page is
+         * refreshed, or the element is removed dynamically.
+         */
         WebElement searchBox = null;
         try {
             searchBox = driver.findElement(By.name("q"));
